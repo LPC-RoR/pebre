@@ -1,0 +1,2 @@
+class AppEnlace < ApplicationRecord
+end

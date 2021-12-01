@@ -1,0 +1,2 @@
+class AppMsgMsg < ApplicationRecord
+end
