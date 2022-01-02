@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_01_213748) do
+ActiveRecord::Schema.define(version: 2021_12_28_020227) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -185,6 +185,23 @@ ActiveRecord::Schema.define(version: 2021_12_01_213748) do
     t.index ["repositorio"], name: "index_app_repos_on_repositorio"
   end
 
+  create_table "areas", force: :cascade do |t|
+    t.string "area"
+    t.string "acceso"
+    t.string "proyecto_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "grupos", force: :cascade do |t|
+    t.integer "orden"
+    t.string "grupo"
+    t.boolean "activo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["orden"], name: "index_grupos_on_orden"
+  end
+
   create_table "h_imagenes", force: :cascade do |t|
     t.string "nombre"
     t.datetime "created_at", null: false
@@ -225,6 +242,28 @@ ActiveRecord::Schema.define(version: 2021_12_01_213748) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["clave"], name: "index_hlp_tutoriales_on_clave"
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.integer "orden"
+    t.string "item"
+    t.boolean "activo"
+    t.integer "grupo_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["grupo_id"], name: "index_items_on_grupo_id"
+    t.index ["orden"], name: "index_items_on_orden"
+  end
+
+  create_table "proyectos", force: :cascade do |t|
+    t.string "proyecto"
+    t.string "razon_social"
+    t.string "rut"
+    t.string "direccion"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "estado"
+    t.index ["estado"], name: "index_proyectos_on_estado"
   end
 
   create_table "sb_elementos", force: :cascade do |t|

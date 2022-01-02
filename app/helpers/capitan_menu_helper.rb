@@ -20,9 +20,10 @@ module CapitanMenuHelper
 	    ## Menu principal de la aplicación
 	    # [ 'Item del menú', 'link', 'accesso', 'gly' ]
 	    [
-#	        ['',               "/vistas/graficos",   'usuario', 'bar-chart-line'],
-#	        ["Colecciones",    "/vistas",            'anonimo', 'newspaper'],
-#	        ["Escritorio",     "/vistas/escritorio", 'usuario', 'window-sidebar']
+#	        ['',        "/st_bandejas",                             'nomina', 'inboxes'],
+	        ["Instagram", "https://www.instagram.com/lacalmastgo/", 'anonimo', 'instagram'],
+	        ['Menu'     , '/grupos',                                'anonimo', 'award'],
+	        ["reservas" , '/reservas/new',                         'anonimo', 'calendar3']
 	    ]
 
 	end

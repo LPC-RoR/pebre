@@ -3,9 +3,9 @@ module CapitanRecursosHelper
 
 	def app_setup
 		{
-			nombre: 'Appname',
-			home_link: 'http://www.appname.cl',
-			logo_navbar: 'logo_navbar.gif'
+			nombre: 'La Calma - Restaurante',
+			home_link: 'http://www.lacalma.cl',
+			logo_navbar: 'logo_navbar.png'
 		}
 	end
 
@@ -27,12 +27,12 @@ module CapitanRecursosHelper
 
 	def app_color
 		{
-			app: 'primary',
-			navbar: 'primary',
+			app: 'dark',
+			navbar: 'dark',
 			help: 'dark',
 			data: 'success',
-			title_tema: 'primary',
-			detalle_tema: 'primary'
+			title_tema: 'dark',
+			detalle_tema: 'dark'
 		}
 	end
 

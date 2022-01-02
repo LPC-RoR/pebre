@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Orden:</strong>
+  <%= @item.orden %>
+</p>
+
+<p>
+  <strong>Item:</strong>
+  <%= @item.item %>
+</p>
+
+<p>
+  <strong>Activo:</strong>
+  <%= @item.activo %>
+</p>
+
+<p>
+  <strong>Grupo:</strong>
+  <%= @item.grupo_id %>
+</p>
+
+<%= link_to 'Edit', edit_item_path(@item) %> |
+<%= link_to 'Back', items_path %>

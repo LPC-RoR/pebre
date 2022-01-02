@@ -1,33 +1,13 @@
 Rails.application.routes.draw do
-  resources :st_logs
-  resources :st_bandejas
-  resources :st_perfil_estados
-  resources :st_estados
-  resources :st_modelos
-  resources :hlp_pasos
-  resources :hlp_tutoriales
-  resources :sb_elementos
-  resources :sb_listas
-  resources :h_links
-  resources :h_temas
-  resources :h_imagenes
-  resources :app_enlaces
-  resources :app_archivos
-  resources :app_documentos
-  resources :app_dir_dires
-  resources :app_directorios
-  resources :app_repos
-  resources :app_msg_msgs
-  resources :app_mensajes
-  resources :app_contactos
-  resources :app_imagenes
-  resources :app_recursos
-  resources :app_mejoras
-  resources :app_observaciones
-  resources :app_perfiles
-  resources :app_nominas
-  resources :app_administradores
 
+  resources :items
+  resources :grupos do
+    resources :items
+  end
+  resources :areas
+  resources :proyectos do
+    resources :areas
+  end
   scope module: 'aplicacion' do
     resources :app_administradores
     resources :app_nominas
@@ -71,6 +51,66 @@ Rails.application.routes.draw do
 
   end
 
+  scope module: 'home' do
+    resources :h_imagenes
+    resources :h_links
+    resources :h_temas
+  end
+  
+  scope module: 'sidebar' do
+    resources :sb_elementos
+    resources :sb_listas do
+      resources :sb_elementos
+    end
+  end
+
+
+  # SCOPE HELP
+  scope module: 'help' do
+    resources :hlp_pasos
+    resources :hlp_tutoriales do
+      resources :hlp_pasos
+    end
+
+#    resources :conversaciones
+    resources :mensajes do 
+      match :estado, via: :get, on: :member
+      match :respuesta, via: :post, on: :collection
+    end
+    resources :pasos
+    resources :tema_ayudas do
+      resources :tutoriales
+    end
+    resources :tutoriales do
+      resources :pasos
+    end
+  end
+
+  scope module: 'estados' do
+    resources :st_estados do
+      match :asigna, via: :get, on: :member
+    end
+    resources :st_modelos do 
+      resources :st_estados
+      match :asigna, via: :get, on: :member
+    end
+    resources :st_perfil_estados do
+      match :desasignar, via: :get, on: :member
+      match :cambia_rol, via: :get, on: :member
+    end
+    resources :st_perfil_modelos do
+      resources :st_perfil_estados
+      match :desasignar, via: :get, on: :member
+      match :cambia_rol, via: :get, on: :member
+      match :cambia_ingreso, via: :get, on: :member
+    end
+    resources :st_bandejas
+  end
+
   devise_for :usuarios
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  root 'aplicacion/app_recursos#home'
+
 end

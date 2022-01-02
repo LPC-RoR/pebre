@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  proyecto: MyString
+  razon_social: MyString
+  rut: MyString
+  direccion: MyString
+
+two:
+  proyecto: MyString
+  razon_social: MyString
+  rut: MyString
+  direccion: MyString
