@@ -10,7 +10,7 @@
     <%= favicon_link_tag asset_path('favicon.ico') if File.exist?("app/assets/images/favicon.ico") %>
   </head>
 
-  <body class=<%= (action_name == 'home' or controller_name == 'grupos') ? 'bg-dark' : 'bg-white'%>>
+  <body class=<%= (action_name == 'home' or (controller_name == 'grupos' and action_name == 'index') ) ? 'bg-dark' : 'bg-white'%>>
     <!--            NAVBAR                     -->
     <%= render partial: '0p/navbar/navbar' %>
     <%= image_tag 'intro.png' if action_name == 'home' %>
