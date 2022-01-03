@@ -3,8 +3,8 @@ module CapitanMenuHelper
 	def optional_menu_item
 		{
 			recursos: false,
-			contacto: true,
-			ayuda: true
+			contacto: false,
+			ayuda: false
 		}
 	end
 
