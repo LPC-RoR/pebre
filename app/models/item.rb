@@ -2,7 +2,9 @@ class Item < ApplicationRecord
 
 	TABLA_FIELDS = [
 		['orden', 'normal'],
-		['item', 'show']
+		['codigo', 'normal'],
+		['item', 'show'],
+		['precio', 'normal']
 	]
 
 	belongs_to :grupo

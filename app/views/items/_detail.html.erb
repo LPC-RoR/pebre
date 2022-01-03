@@ -3,6 +3,8 @@
 <%= render partial: '0p/display/form_fields', locals: {form: form, helper_name: 'text', token: :codigo, label: 'Código', v: false } %>
 <%= render partial: '0p/display/form_fields', locals: {form: form, helper_name: 'text', token: :item, label: 'Item', v: false } %>
 
+<%= render partial: '0p/display/form_fields', locals: {form: form, helper_name: 'number', token: :precio, label: 'Precio', v: false } %>
+
 <%= render partial: '0p/display/form_fields', locals: {form: form, helper_name: 'check_box', token: :pesca_del_dia, label: 'Pesca del día?', v: false } %>
 
 <%= render partial: '0p/display/form_fields', locals: {form: form, helper_name: 'hidden', token: :grupo_id, label: nil, v: false } %>
