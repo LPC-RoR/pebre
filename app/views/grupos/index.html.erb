@@ -13,7 +13,7 @@
       <% grupo.items.order(:orden).each do |item|  %>
         <tr>
           <td><%= item.item %></td>
-          <td>9.999</td>
+          <td class="text-right">$ <%= number_with_precision(item.precio, precision: 0, delimiter: '.') %></td>
         </tr>
       <% end %>
 
