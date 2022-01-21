@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_03_030925) do
+ActiveRecord::Schema.define(version: 2022_01_21_013059) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -268,6 +268,17 @@ ActiveRecord::Schema.define(version: 2022_01_03_030925) do
     t.datetime "updated_at", null: false
     t.string "estado"
     t.index ["estado"], name: "index_proyectos_on_estado"
+  end
+
+  create_table "reservas", force: :cascade do |t|
+    t.string "anombre"
+    t.datetime "fecha"
+    t.string "n_personas"
+    t.string "n_contacto"
+    t.string "indicaciones"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "hora"
   end
 
   create_table "sb_elementos", force: :cascade do |t|

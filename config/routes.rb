@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :reservas
   resources :items
   resources :grupos do
     resources :items

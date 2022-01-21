@@ -13,7 +13,7 @@
   <body class=<%= (action_name == 'home' or (controller_name == 'grupos' and action_name == 'index') ) ? 'bg-dark' : 'bg-white'%>>
     <!--            NAVBAR                     -->
     <%= render partial: '0p/navbar/navbar' %>
-    <%= image_tag 'intro.png' if action_name == 'home' %>
+    <%= image_tag 'intro.png', class: "img-fluid" if action_name == 'home' %>
 
     </br>
     <!--            CONTENIDO + MENU DERECHA   -->
