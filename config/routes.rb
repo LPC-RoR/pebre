@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  resources :reservas
+  resources :reservas do
+    match :confirmacion, via: :get, on: :member
+  end
   resources :items
   resources :grupos do
     resources :items

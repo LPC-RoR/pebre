@@ -39,7 +39,7 @@
 		<%= form.date_select token , {order: [:day, :month, :year], start_year: Date.today.year + 1, end_year: Date.today.year, default: 0.days.from_now }, {required: false} %>
 		</small></br>
 	<% when 'q_number' %>
-		<%= form.number_field(token, size: 37, class: 'form-control-sm') %></br>
+		<%= form.number_field(token, size: 20, class: 'form-control-sm') %></br>
 	<% when 'number' %>
 		<%= form.number_field(token, size: 74, class: 'form-control-sm') %></br>
 

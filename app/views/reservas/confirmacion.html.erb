@@ -1,0 +1,11 @@
+<h4 class='text-center'>Reserva exitosa!</h4>
+Rserva a nombre de: <%= @objeto.anombre %></br>
+Fecha: <%= @objeto.fecha.strftime("%d-%m-%Y") %></br>
+Hora: <%=@objeto.hora %></br>
+<h5 class='text.center'>Muchas gracias por su preferencia!</h5>
+
+<div class='text-center'>
+<div class="btn btn-outline-dark">
+  <%= link_to 'Volver a nuestra web', root_path, :class => "btn" %>
+</div>
+</div>

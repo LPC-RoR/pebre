@@ -1,9 +1,10 @@
 class ReservasController < ApplicationController
-  before_action :set_reserva, only: %i[ show edit update destroy ]
+  before_action :set_reserva, only: %i[ show edit update destroy confirmacion ]
 
   # GET /reservas or /reservas.json
   def index
-    @coleccion = Reserva.all
+    @coleccion = {}
+    @coleccion['reservas'] = Reserva.where("DATE(fecha) = ?", Date.today)
   end
 
   # GET /reservas/1 or /reservas/1.json
@@ -25,7 +26,8 @@ class ReservasController < ApplicationController
 
     respond_to do |format|
       if @objeto.save
-        format.html { redirect_to @objeto, notice: "Reserva was successfully created." }
+        set_redireccion
+        format.html { redirect_to @redireccion, notice: "Reserva was successfully created." }
         format.json { render :show, status: :created, location: @objeto }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +40,7 @@ class ReservasController < ApplicationController
   def update
     respond_to do |format|
       if @objeto.update(reserva_params)
-        format.html { redirect_to @objeto, notice: "Reserva was successfully updated." }
+        format.html { redirect_to reservas_url, notice: "Reserva was successfully updated." }
         format.json { render :show, status: :ok, location: @objeto }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -62,8 +64,12 @@ class ReservasController < ApplicationController
       @objeto = Reserva.find(params[:id])
     end
 
+    def set_redireccion
+      @redireccion = "/reservas/#{@objeto.id}/confirmacion"
+    end
+
     # Only allow a list of trusted parameters through.
     def reserva_params
-      params.require(:reserva).permit(:anombre, :fecha, :n_personas, :n_contacto, :indicaciones)
+      params.require(:reserva).permit(:anombre, :fecha, :n_personas, :n_contacto, :indicaciones, :hora)
     end
 end
