@@ -23,7 +23,7 @@ module CapitanMenuHelper
 #	        ['',        "/st_bandejas",                             'nomina', 'inboxes'],
 	        ["Instagram", "https://www.instagram.com/lacalmastgo/", 'anonimo', 'instagram'],
 	        ['Menu'     , '/grupos',                                'anonimo', 'award'],
-#	        ["reservas" , '/reservas/new',                         'anonimo', 'calendar3']
+	        ["reservas" , '/reservas/new',                         'anonimo', 'calendar3']
 	    ]
 
 	end
