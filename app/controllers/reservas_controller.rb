@@ -4,7 +4,8 @@ class ReservasController < ApplicationController
   # GET /reservas or /reservas.json
   def index
     @coleccion = {}
-    @coleccion['reservas'] = Reserva.where("DATE(fecha) = ?", Date.today)
+    ids_dia = Reserva.all.map {|res| res.id if res.fecha.to_date == Date.today}.compact
+    @coleccion['reservas'] = Reserva.where(id: ids_dia)
   end
 
   # GET /reservas/1 or /reservas/1.json

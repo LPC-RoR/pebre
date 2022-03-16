@@ -100,6 +100,8 @@ module CapitanRecursosHelper
 			case objeto.class.name
 			when 'Clase'
 				admin?
+			when 'Reserva'
+				false
 			else
 				true
 			end

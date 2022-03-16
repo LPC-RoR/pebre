@@ -3,6 +3,7 @@ class Reserva < ApplicationRecord
 
 	TABLA_FIELDS = [
 		['anombre', 'normal'],
+		['n_contacto', 'normal'],
 		['n_personas', 'normal'],
 		['hora', 'normal']
 	]
