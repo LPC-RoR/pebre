@@ -1,5 +1,1 @@
-<% if Cierre.find_by(fecha: Date.today).blank? %>
-	<%= render partial: '0p/form/form' %>
-<% else %>
-	<%= render partial: 'reservas/reservas_cerradas' %>
-<% end %>
+<%= render partial: '0p/form/form' %>
