@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_21_013059) do
+ActiveRecord::Schema.define(version: 2022_03_16_014408) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -191,6 +191,13 @@ ActiveRecord::Schema.define(version: 2022_01_21_013059) do
     t.string "proyecto_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "cierres", force: :cascade do |t|
+    t.date "fecha"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["fecha"], name: "index_cierres_on_fecha"
   end
 
   create_table "grupos", force: :cascade do |t|

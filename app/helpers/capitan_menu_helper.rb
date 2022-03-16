@@ -10,9 +10,10 @@ module CapitanMenuHelper
 
 	def menu_base
 	    [
-	        ['',           '/app_recursos/administracion', 'admin', 'person-rolodex'],
-#	        ["Contenido",  "/tema_ayudas",                 'admin', 'stack'],
-	        ["Procesos",   "/app_recursos/procesos",       'dog',   'radioactive']
+	        ['',           '/app_recursos/administracion', 'admin',  'person-rolodex'],
+	        ["Reservas",   "/reservas",                    'nomina', 'stack'],
+	        ["Cierres",    "/cierres",                     'nomina', 'stack'],
+	        ["Procesos",   "/app_recursos/procesos",       'dog',    'radioactive']
 	    ]
 	end
 
@@ -23,7 +24,7 @@ module CapitanMenuHelper
 #	        ['',        "/st_bandejas",                             'nomina', 'inboxes'],
 	        ["Instagram", "https://www.instagram.com/lacalmastgo/", 'anonimo', 'instagram'],
 	        ['Menu'     , '/grupos',                                'anonimo', 'award'],
-	        ["reservas" , '/reservas/new',                         'anonimo', 'calendar3']
+	        ["reservas" , '/reservas/new',                          'anonimo', 'calendar3']
 	    ]
 
 	end

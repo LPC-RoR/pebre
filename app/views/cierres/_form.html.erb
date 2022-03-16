@@ -1,0 +1,22 @@
+<%= form_with(model: cierre, local: true) do |form| %>
+  <% if cierre.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(cierre.errors.count, "error") %> prohibited this cierre from being saved:</h2>
+
+      <ul>
+      <% cierre.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :fecha %>
+    <%= form.date_select :fecha %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

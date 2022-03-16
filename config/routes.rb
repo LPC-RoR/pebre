@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
+  resources :cierres
   resources :reservas do
     match :confirmacion, via: :get, on: :member
+    match :reservas_cerradas, via: :get, on: :member
   end
   resources :items
   resources :grupos do
