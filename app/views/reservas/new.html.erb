@@ -1,1 +1,5 @@
-<%= render partial: '0p/form/form' %>
+<% if @dia_abierto %>
+	<%= render partial: '0p/form/form' %>
+<% else %>
+	<%= render partial: 'reservas/reservas_cerradas' %>
+<% end %>

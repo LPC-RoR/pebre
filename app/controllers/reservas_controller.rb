@@ -14,6 +14,8 @@ class ReservasController < ApplicationController
 
   # GET /reservas/new
   def new
+    cierre = Cierre.find_by(fecha: Date.today)
+    @dia_abierto = cierre.blank?
     @objeto = Reserva.new
   end
 
