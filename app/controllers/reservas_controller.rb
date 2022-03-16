@@ -14,7 +14,7 @@ class ReservasController < ApplicationController
 
   # GET /reservas/new
   def new
-    cierre_id = Cierre.all.map {|cie| cie.id if cie.fecha == Date.today}.compact
+    cierre_id = Cierre.all.map {|cie| cie.id if cie.fecha.to_date == Date.today}.compact
     @dia_abierto = cierre_id.empty?
     @objeto = Reserva.new
   end
