@@ -14,8 +14,8 @@ class ReservasController < ApplicationController
 
   # GET /reservas/new
   def new
-    cierre = Cierre.find_by(fecha: Date.today)
-    @dia_abierto = cierre.blank?
+    cierre_id = Cierre.all.map {|cie| cie.id if cie.fecha == Date.today}.compact
+    @dia_abierto = cierre_id.empty?
     @objeto = Reserva.new
   end
 
