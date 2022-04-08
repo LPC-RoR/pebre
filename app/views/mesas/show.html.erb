@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Zona:</strong>
+  <%= @mesa.zona %>
+</p>
+
+<p>
+  <strong>Mesa:</strong>
+  <%= @mesa.mesa %>
+</p>
+
+<p>
+  <strong>Reserva:</strong>
+  <%= @mesa.reserva %>
+</p>
+
+<p>
+  <strong>Pasajeros:</strong>
+  <%= @mesa.pasajeros %>
+</p>
+
+<%= link_to 'Edit', edit_mesa_path(@mesa) %> |
+<%= link_to 'Back', mesas_path %>

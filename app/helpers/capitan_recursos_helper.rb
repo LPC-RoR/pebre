@@ -82,14 +82,28 @@ module CapitanRecursosHelper
 	end
 
 	def app_alias_tabla(controller)
-		controller
+		case controller
+			when 'almuerzos'
+			'mesas'
+			when 'cenas'
+			'mesas'
+		else
+			controller
+		end
 	end
 
 	def app_new_button_conditions(controller)
 		if [].include?(controller)
 			admin?
+		elsif ['almuerzos', 'cenas'].include?(controller)
+			controller_name == 'mesas'
 		else
-			true
+			case controller
+			when 'controlador'
+				'condicion'
+			else
+				true
+			end
 		end
 	end
 
@@ -102,6 +116,8 @@ module CapitanRecursosHelper
 				admin?
 			when 'Reserva'
 				false
+			when 'Mesa'
+				controller_name == 'mesas'
 			else
 				true
 			end

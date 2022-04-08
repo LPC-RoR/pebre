@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_16_014408) do
+ActiveRecord::Schema.define(version: 2022_04_06_223327) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -197,7 +197,23 @@ ActiveRecord::Schema.define(version: 2022_03_16_014408) do
     t.date "fecha"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "turno"
     t.index ["fecha"], name: "index_cierres_on_fecha"
+  end
+
+  create_table "detalle_reservas", force: :cascade do |t|
+    t.date "fecha"
+    t.string "servicio"
+    t.string "salon"
+    t.string "mesa"
+    t.string "horario"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["fecha"], name: "index_detalle_reservas_on_fecha"
+    t.index ["horario"], name: "index_detalle_reservas_on_horario"
+    t.index ["mesa"], name: "index_detalle_reservas_on_mesa"
+    t.index ["salon"], name: "index_detalle_reservas_on_salon"
+    t.index ["servicio"], name: "index_detalle_reservas_on_servicio"
   end
 
   create_table "grupos", force: :cascade do |t|
@@ -266,6 +282,23 @@ ActiveRecord::Schema.define(version: 2022_03_16_014408) do
     t.index ["orden"], name: "index_items_on_orden"
   end
 
+  create_table "mesas", force: :cascade do |t|
+    t.string "zona"
+    t.string "mesa"
+    t.boolean "reserva"
+    t.integer "pasajeros"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "horario"
+    t.string "servicio"
+    t.index ["horario"], name: "index_mesas_on_horario"
+    t.index ["mesa"], name: "index_mesas_on_mesa"
+    t.index ["pasajeros"], name: "index_mesas_on_pasajeros"
+    t.index ["reserva"], name: "index_mesas_on_reserva"
+    t.index ["servicio"], name: "index_mesas_on_servicio"
+    t.index ["zona"], name: "index_mesas_on_zona"
+  end
+
   create_table "proyectos", force: :cascade do |t|
     t.string "proyecto"
     t.string "razon_social"
@@ -275,6 +308,20 @@ ActiveRecord::Schema.define(version: 2022_03_16_014408) do
     t.datetime "updated_at", null: false
     t.string "estado"
     t.index ["estado"], name: "index_proyectos_on_estado"
+  end
+
+  create_table "reservaciones", force: :cascade do |t|
+    t.date "fecha"
+    t.string "servicio"
+    t.string "zona"
+    t.string "mesa"
+    t.integer "pasajeros"
+    t.string "hora"
+    t.string "anombre"
+    t.string "n_contacto"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["fecha"], name: "index_reservaciones_on_fecha"
   end
 
   create_table "reservas", force: :cascade do |t|
@@ -364,6 +411,19 @@ ActiveRecord::Schema.define(version: 2022_03_16_014408) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["app_nomina_id"], name: "index_st_perfil_modelos_on_app_nomina_id"
+  end
+
+  create_table "tandas", force: :cascade do |t|
+    t.string "turno"
+    t.integer "orden"
+    t.string "horario"
+    t.integer "capacidad"
+    t.boolean "cerrado"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["horario"], name: "index_tandas_on_horario"
+    t.index ["orden"], name: "index_tandas_on_orden"
+    t.index ["turno"], name: "index_tandas_on_turno"
   end
 
   create_table "usuarios", force: :cascade do |t|

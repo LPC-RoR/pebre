@@ -1,0 +1,42 @@
+<%= form_with(model: detalle_reserva, local: true) do |form| %>
+  <% if detalle_reserva.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(detalle_reserva.errors.count, "error") %> prohibited this detalle_reserva from being saved:</h2>
+
+      <ul>
+      <% detalle_reserva.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :fecha %>
+    <%= form.date_select :fecha %>
+  </div>
+
+  <div class="field">
+    <%= form.label :servicio %>
+    <%= form.text_field :servicio %>
+  </div>
+
+  <div class="field">
+    <%= form.label :salon %>
+    <%= form.text_field :salon %>
+  </div>
+
+  <div class="field">
+    <%= form.label :mesa %>
+    <%= form.text_field :mesa %>
+  </div>
+
+  <div class="field">
+    <%= form.label :horario %>
+    <%= form.text_field :horario %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Fecha:</strong>
+  <%= @detalle_reserva.fecha %>
+</p>
+
+<p>
+  <strong>Servicio:</strong>
+  <%= @detalle_reserva.servicio %>
+</p>
+
+<p>
+  <strong>Salon:</strong>
+  <%= @detalle_reserva.salon %>
+</p>
+
+<p>
+  <strong>Mesa:</strong>
+  <%= @detalle_reserva.mesa %>
+</p>
+
+<p>
+  <strong>Horario:</strong>
+  <%= @detalle_reserva.horario %>
+</p>
+
+<%= link_to 'Edit', edit_detalle_reserva_path(@detalle_reserva) %> |
+<%= link_to 'Back', detalle_reservas_path %>

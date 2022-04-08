@@ -1,0 +1,2 @@
+class DetalleReserva < ApplicationRecord
+end

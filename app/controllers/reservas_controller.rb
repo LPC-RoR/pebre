@@ -3,9 +3,20 @@ class ReservasController < ApplicationController
 
   # GET /reservas or /reservas.json
   def index
+    puts params[:d]
+    @fecha = (params[:d].blank? ? Date.today : Date.parse(params[:d]))
+    @lunes = (@fecha.strftime("%A") == 'Monday')
+
     @coleccion = {}
-    ids_dia = Reserva.all.map {|res| res.id if res.fecha.to_date == Date.today}.compact
+    ids_dia = Reserva.all.map {|res| res.id if res.fecha.to_date == @fecha}.compact
     @coleccion['reservas'] = Reserva.where(id: ids_dia)
+  end
+
+  def reservacion
+    @fecha = Date.today
+    @coleccion = {}
+    @coleccion['almuerzos'] = Mesa.where(servicio: 'Almuerzo').order(:horario)
+    @coleccion['cenas'] = Mesa.where(servicio: 'Cena').order(:horario)
   end
 
   # GET /reservas/1 or /reservas/1.json
@@ -14,6 +25,12 @@ class ReservasController < ApplicationController
 
   # GET /reservas/new
   def new
+    # Hay que pasar la fecha
+    # Se deben cargar los horarios de un día en particular
+    @horarios = Tanda.all.map {|tan| tan.horario.split('-')[0] }.sort!
+
+
+
     cierre_id = Cierre.all.map {|cie| cie.id if cie.fecha.to_s == Date.today.to_s}.compact
     @dia_abierto = cierre_id.empty?
     @objeto = Reserva.new

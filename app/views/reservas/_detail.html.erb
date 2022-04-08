@@ -9,7 +9,7 @@
 				<%= render partial: '0p/display/form_fields', locals: {form: form, helper_name: 'q_number', token: :n_personas, label: 'Número de personas', v: true } %>
 			</div>
 			<div class='col-md-6'>
-				<%= render partial: '0p/display/form_fields', locals: {form: form, helper_name: 'select', token: :hora, label: 'Hora de la Reserva', sel_list: Reserva::HORAS, v: true } %>
+				<%= render partial: '0p/display/form_fields', locals: {form: form, helper_name: 'select', token: :hora, label: 'Hora de la Reserva', sel_list: @horarios, v: true } %>
 			</div>
 		</div>
 	</div>

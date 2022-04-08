@@ -12,6 +12,8 @@ module CapitanMenuHelper
 	    [
 	        ['',           '/app_recursos/administracion', 'admin',  'person-rolodex'],
 	        ["Reservas",   "/reservas",                    'nomina', 'stack'],
+	        ["Reserva",    "/reservas/reservacion",        'nomina', 'stack'],
+	        ["Mesas",      "/mesas",                       'admin',  'stack'],
 	        ["Cierres",    "/cierres",                     'nomina', 'stack'],
 	        ["Procesos",   "/app_recursos/procesos",       'dog',    'radioactive']
 	    ]

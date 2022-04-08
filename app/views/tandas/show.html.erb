@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Turno:</strong>
+  <%= @tanda.turno %>
+</p>
+
+<p>
+  <strong>Orden:</strong>
+  <%= @tanda.orden %>
+</p>
+
+<p>
+  <strong>Horario:</strong>
+  <%= @tanda.horario %>
+</p>
+
+<p>
+  <strong>Capacidad:</strong>
+  <%= @tanda.capacidad %>
+</p>
+
+<p>
+  <strong>Cerrado:</strong>
+  <%= @tanda.cerrado %>
+</p>
+
+<%= link_to 'Edit', edit_tanda_path(@tanda) %> |
+<%= link_to 'Back', tandas_path %>

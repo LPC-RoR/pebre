@@ -1,0 +1,42 @@
+<%= form_with(model: tanda, local: true) do |form| %>
+  <% if tanda.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(tanda.errors.count, "error") %> prohibited this tanda from being saved:</h2>
+
+      <ul>
+      <% tanda.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :turno %>
+    <%= form.text_field :turno %>
+  </div>
+
+  <div class="field">
+    <%= form.label :orden %>
+    <%= form.number_field :orden %>
+  </div>
+
+  <div class="field">
+    <%= form.label :horario %>
+    <%= form.text_field :horario %>
+  </div>
+
+  <div class="field">
+    <%= form.label :capacidad %>
+    <%= form.number_field :capacidad %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cerrado %>
+    <%= form.check_box :cerrado %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

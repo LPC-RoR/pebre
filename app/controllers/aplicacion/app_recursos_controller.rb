@@ -10,6 +10,7 @@ class Aplicacion::AppRecursosController < ApplicationController
   end
 
   def home
+    @lunes = (Date.today.strftime("%A") == 'Monday')
   end
 
   def ayuda

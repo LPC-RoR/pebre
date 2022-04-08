@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  zona: MyString
+  mesa: MyString
+  reserva: false
+  pasajeros: 1
+
+two:
+  zona: MyString
+  mesa: MyString
+  reserva: false
+  pasajeros: 1

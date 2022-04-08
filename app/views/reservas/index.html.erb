@@ -1,3 +1,16 @@
 <h5 class='text-center'>Reservas del día</h5>
-<h5 class='text-center'><%=Date.today%></h5>
+<h5 class='text-center'><%=@fecha%></h5>
+
+<div class='text-center'>
+	<% if @lunes %>
+		<h2 class='text-info'>LUNES CERRADO</h2>
+	<% end %>
+	<div class="btn btn-link">
+	  <%= link_to 'Anterior', "/reservas?d=#{@fecha.yesterday.year.to_s+@fecha.yesterday.month.to_s.rjust(2, "0")+@fecha.yesterday.day.to_s.rjust(2, "0")}", :class => "btn" %>
+	</div>
+	<div class="btn btn-link">
+	  <%= link_to 'Siguiente', "/reservas?d=#{@fecha.tomorrow.year.to_s+@fecha.tomorrow.month.to_s.rjust(2, "0")+@fecha.tomorrow.day.to_s.rjust(2, "0")}", :class => "btn" %>
+	</div>
+</div>
+
 <%= render partial: '0p/tabla/solo_tabla', locals: {c: 'reservas', a: 'index'} %>

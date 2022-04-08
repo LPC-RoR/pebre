@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fecha: 2022-03-22
+  servicio: MyString
+  salon: MyString
+  mesa: MyString
+  horario: MyString
+
+two:
+  fecha: 2022-03-22
+  servicio: MyString
+  salon: MyString
+  mesa: MyString
+  horario: MyString

@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Detalle Reservas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Fecha</th>
+      <th>Servicio</th>
+      <th>Salon</th>
+      <th>Mesa</th>
+      <th>Horario</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @detalle_reservas.each do |detalle_reserva| %>
+      <tr>
+        <td><%= detalle_reserva.fecha %></td>
+        <td><%= detalle_reserva.servicio %></td>
+        <td><%= detalle_reserva.salon %></td>
+        <td><%= detalle_reserva.mesa %></td>
+        <td><%= detalle_reserva.horario %></td>
+        <td><%= link_to 'Show', detalle_reserva %></td>
+        <td><%= link_to 'Edit', edit_detalle_reserva_path(detalle_reserva) %></td>
+        <td><%= link_to 'Destroy', detalle_reserva, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Detalle Reserva', new_detalle_reserva_path %>
