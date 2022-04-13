@@ -99,8 +99,8 @@ module CapitanRecursosHelper
 			controller_name == 'mesas'
 		else
 			case controller
-			when 'controlador'
-				'condicion'
+			when 'reservas'
+				false
 			else
 				true
 			end

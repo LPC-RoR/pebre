@@ -9,6 +9,7 @@ class ReservasController < ApplicationController
     @coleccion = {}
     ids_dia = Reserva.all.map {|res| res.id if res.fecha.to_date == @fecha}.compact
     @coleccion['reservas'] = Reserva.where(id: ids_dia)
+    @coleccion['reservas'] = @coleccion['reservas'].order(:hora) if @coleccion['reservas'].any?
   end
 
   def reservacion
