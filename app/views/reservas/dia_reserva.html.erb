@@ -1,0 +1,16 @@
+<h4 class='text-center text-muted'>Seleccione el día de la reserva
+
+<h5 class='text-center text-muted'><b>LUNES CERRADO</b></h5>
+<h5 class='text-center text-muted'><b>martes a sábado</b> 13:00 a 16:00 - 19:00 a 22:00</br><b>domingo</b> 13:00 a 16:00</h5>
+<h6 class='text-center text-muted'>PARA RESERVAS DE MÁS DE 6 PERSONAS LLAMAR AL <b>+56 9 9613 0353</b></h6>
+
+<h6 class='text-center text-muted'>
+	<%= form_for :dia_elegido, url: "/reservas/elige_dia" do |form| %>
+		<small>
+		<%= form.date_select :fecha , {order: [:day, :month, :year], start_year: Date.today.year + 1, end_year: Date.today.year, default: 0.days.from_now }, {required: false} %>
+		</small>
+		<%= form.submit 'Buscar Reserva'  %>
+	<div class='form-inline'>
+	</div>
+<% end  %>
+</h6>

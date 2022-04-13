@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     match :confirmacion, via: :get, on: :member
     match :reservas_cerradas, via: :get, on: :member
     match :reservacion, via: :get, on: :collection
+    match :dia_reserva, via: :get, on: :collection
+    match :elige_dia, via: :post, on: :collection
   end
   resources :items
   resources :grupos do

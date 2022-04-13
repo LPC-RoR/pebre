@@ -1,8 +1,7 @@
 <%= 'LUNES CERRADO'%></br>
-<%= 'martes a sábado almuerzos de 13:00 a 16:00, cenas de 19:00 a 22:00; domingo 13:00 a 16:00' %></br>
-<%= 'PARA RESERVAS DE MÁS DE 6 PERSONAS POR FAVOR COMUNICARSE AL +56 9 9613 0353' %>
+<%= 'martes a sábado 13:00 a 16:00 - 19:00 a 22:00; domingo 13:00 a 16:00' %></br>
+<%= 'PARA RESERVAS DE MÁS DE 6 PERSONAS POR FAVOR LLAMAR AL +56 9 9613 0353' %>
 
-<%= render partial: '0p/display/form_fields', locals: {form: form, helper_name: 'date_reserva', token: :fecha, label: 'Fecha', v: true } %>
 <%= render partial: '0p/display/form_fields', locals: {form: form, helper_name: 'text', token: :anombre, label: 'Reserva a nombre de', v: true } %>
 <div class='row'>
 	<div class='col-md-6'>
@@ -20,3 +19,5 @@
 
 <%= render partial: '0p/display/form_fields', locals: {form: form, helper_name: 'text', token: :n_contacto, label: 'Número telefónico de contacto', v: true } %>
 <%= render partial: '0p/display/form_fields', locals: {form: form, helper_name: 'text_area', token: :indicaciones, label: 'Indicaciones', v: false } %>
+
+<%= render partial: '0p/display/form_fields', locals: {form: form, helper_name: 'hidden', token: :fecha, label: nil, v: nil } %>
