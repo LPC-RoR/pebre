@@ -7,6 +7,8 @@ class ReservasController < ApplicationController
     @lunes = (@fecha.strftime("%A") == 'Monday')
 
     @coleccion = {}
+    @coleccion['tandas'] = Tanda.all.order(:horario)
+
     ids_dia = Reserva.all.map {|res| res.id if res.fecha.to_date == @fecha}.compact
     @coleccion['reservas'] = Reserva.where(id: ids_dia)
     @coleccion['reservas'] = @coleccion['reservas'].order(:hora) if @coleccion['reservas'].any?
@@ -27,8 +29,12 @@ class ReservasController < ApplicationController
   def new
     # Hay que pasar la fecha
     @fecha = Date.parse(params[:d])
+
+    @domingo = (@fecha.strftime("%A") == 'Sunday')
+    tandas = (@domingo ? Tanda.where(turno: 'Almuerzo') : Tanda.all)
+
     # Se deben cargar los horarios de un día en particular
-    @horarios = Tanda.all.map {|tan| tan.horario.split('-')[0] if abierto(@fecha, tan.horario) }.compact.sort!
+    @horarios = tandas.map {|tan| tan.horario.split('-')[0] if abierto(@fecha, tan.horario) }.compact.sort!
 
 
     cierre_id = Cierre.all.map {|cie| cie.id if cie.fecha.to_s == Date.today.to_s}.compact
@@ -92,6 +98,7 @@ class ReservasController < ApplicationController
   private
 
     def abierto(fecha, horario)
+
       ids_dia = Reserva.all.map {|res| res.id if res.fecha.to_date == @fecha}.compact
       reservas_dia = Reserva.where(id: ids_dia)
 
