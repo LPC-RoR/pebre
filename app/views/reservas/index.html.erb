@@ -29,7 +29,7 @@
 		<h5 class='text-center'>Web</h5>
 
 		<% @coleccion['tandas'].each do |tanda| %>
-			<b><%= tanda.horario %></b></br>
+			<small><b><%= tanda.horario %></b></small></br>
 			<%= render partial: 'reservas/tanda', locals: {coleccion: @tanda[tanda.horario]} unless @tanda[tanda.horario].empty? %>
 		<% end %>
 

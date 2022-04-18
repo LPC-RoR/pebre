@@ -1,14 +1,12 @@
 <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">A nombre de</th>
-      <th scope="col">Contacto</th>
-      <th scope="col">Paxs</th>
-      <th scope="col">Hora</th>
-    </tr>
-  </thead>
   <tbody>
     <% coleccion.each do |reserva| %>
+      <tr>
+        <td scope="col"><small><i>A nombre de</i></small></td>
+        <td scope="col"><small><i>Contacto</i></small></td>
+        <td scope="col"><small><i>Paxs</i></small></td>
+        <td scope="col"><small><i>Hora</i></small></td>
+      </tr>
       <tr>
         <td><small><%= reserva.anombre %></small></td>
         <td><small><%= reserva.n_contacto %></small></td>
