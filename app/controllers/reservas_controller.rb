@@ -12,6 +12,13 @@ class ReservasController < ApplicationController
     ids_dia = Reserva.all.map {|res| res.id if res.fecha.to_date == @fecha}.compact
     @coleccion['reservas'] = Reserva.where(id: ids_dia)
     @coleccion['reservas'] = @coleccion['reservas'].order(:hora) if @coleccion['reservas'].any?
+
+    @tanda = {}
+    Tanda.all.order(:horario).each do |tanda|
+      horas = tanda.horario.split('-')
+      res_ids = @coleccion['reservas'].map {|res| res.id if res.hora >= horas[0] and res.hora < horas[1]}.compact
+      @tanda[tanda.horario] = @coleccion['reservas'].empty? ? [] : @coleccion['reservas'].where(id: res_ids)
+    end
   end
 
   def reservacion

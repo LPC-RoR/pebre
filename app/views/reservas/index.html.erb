@@ -29,11 +29,12 @@
 		<h5 class='text-center'>Web</h5>
 
 		<% @coleccion['tandas'].each do |tanda| %>
-			<%= "Tanda #{tanda.horario}" %></br>
+			<b><%= tanda.horario %></b></br>
+			<%= render partial: 'reservas/tanda', locals: {coleccion: @tanda[tanda.horario]} unless @tanda[tanda.horario].empty? %>
 		<% end %>
 
 
-		<%= render partial: '0p/tabla/solo_tabla', locals: {c: 'reservas', a: 'index'} %>
+		<%#= render partial: '0p/tabla/solo_tabla', locals: {c: 'reservas', a: 'index'} %>
 	</div>
 		<h5 class='text-center'>Telefono/WhatsApp/Correo</h5>
 	<div class='col-md-6'></div>

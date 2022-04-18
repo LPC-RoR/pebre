@@ -8,4 +8,5 @@ class Tanda < ApplicationRecord
 		['horario', 'normal'],
 		['capacidad', 'normal']
 	]
+
 end

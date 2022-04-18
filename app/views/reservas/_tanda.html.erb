@@ -1,0 +1,20 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">A nombre de</th>
+      <th scope="col">Contacto</th>
+      <th scope="col">Paxs</th>
+      <th scope="col">Hora</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% coleccion.each do |reserva| %>
+      <tr>
+        <td><small><%= reserva.anombre %></small></td>
+        <td><small><%= reserva.n_contacto %></small></td>
+        <td><small><%= reserva.n_personas %></small></td>
+        <td><small><%= reserva.hora %></small></td>
+    </small>
+    <% end %>
+  </tbody>
+</table>
