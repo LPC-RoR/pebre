@@ -1,0 +1,2 @@
+class Llamada < ApplicationRecord
+end

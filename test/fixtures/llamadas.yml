@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  anombre: MyString
+  contacto: MyString
+  hora: MyString
+  paxs: 1
+  anulada: false
+
+two:
+  anombre: MyString
+  contacto: MyString
+  hora: MyString
+  paxs: 1
+  anulada: false

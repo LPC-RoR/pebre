@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Llamadas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Anombre</th>
+      <th>Contacto</th>
+      <th>Hora</th>
+      <th>Paxs</th>
+      <th>Anulada</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @llamadas.each do |llamada| %>
+      <tr>
+        <td><%= llamada.anombre %></td>
+        <td><%= llamada.contacto %></td>
+        <td><%= llamada.hora %></td>
+        <td><%= llamada.paxs %></td>
+        <td><%= llamada.anulada %></td>
+        <td><%= link_to 'Show', llamada %></td>
+        <td><%= link_to 'Edit', edit_llamada_path(llamada) %></td>
+        <td><%= link_to 'Destroy', llamada, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Llamada', new_llamada_path %>

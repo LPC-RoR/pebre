@@ -44,7 +44,7 @@ class ReservasController < ApplicationController
     @horarios = tandas.map {|tan| tan.horario.split('-')[0] if abierto(@fecha, tan.horario) }.compact.sort!
 
 
-    cierre_id = Cierre.all.map {|cie| cie.id if cie.fecha.to_s == Date.today.to_s}.compact
+    cierre_id = Cierre.all.map {|cie| cie.id if cie.fecha.to_s == @fecha.to_s}.compact
 
     @dia_abierto = (cierre_id.empty? and not @fecha.strftime("%A") == 'Monday')
     @objeto = Reserva.new(fecha: @fecha)

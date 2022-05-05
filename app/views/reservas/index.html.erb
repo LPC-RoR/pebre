@@ -25,18 +25,19 @@
 </div>
 
 <div class='row'>
-	<div class='col-md-6'>
-		<h5 class='text-center'>Web</h5>
-
-		<% @coleccion['tandas'].each do |tanda| %>
-			<small><b><%= tanda.horario %></b></small></br>
-			<%= render partial: 'reservas/tanda', locals: {coleccion: @tanda[tanda.horario]} unless @tanda[tanda.horario].empty? %>
-		<% end %>
-
-
-		<%#= render partial: '0p/tabla/solo_tabla', locals: {c: 'reservas', a: 'index'} %>
-	</div>
-		<h5 class='text-center'>Telefono/WhatsApp/Correo</h5>
-	<div class='col-md-6'></div>
+	<div class='col-md-6'><h5 class='text-center'>Web</h5></div>
+	<div class='col-md-6'><h5 class='text-center'>Telefono/WhatsApp/Correo</h5></div>
 </div>
 
+<% @coleccion['tandas'].each do |tanda| %>
+	<div class='row'>
+		<h6><b><%= tanda.horario %></b></h6>
+	</div>
+	<div class='row'>
+		<div class='col-md-6'>
+			<%= render partial: 'reservas/tanda', locals: {coleccion: @tanda[tanda.horario]} unless @tanda[tanda.horario].empty? %>
+		</div>
+		<div class='col-md-6'>
+		</div>
+	</div>
+<% end %>

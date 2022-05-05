@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :llamadas
   resources :tandas
   resources :reservaciones
   resources :detalle_reservas

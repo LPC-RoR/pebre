@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Anombre:</strong>
+  <%= @llamada.anombre %>
+</p>
+
+<p>
+  <strong>Contacto:</strong>
+  <%= @llamada.contacto %>
+</p>
+
+<p>
+  <strong>Hora:</strong>
+  <%= @llamada.hora %>
+</p>
+
+<p>
+  <strong>Paxs:</strong>
+  <%= @llamada.paxs %>
+</p>
+
+<p>
+  <strong>Anulada:</strong>
+  <%= @llamada.anulada %>
+</p>
+
+<%= link_to 'Edit', edit_llamada_path(@llamada) %> |
+<%= link_to 'Back', llamadas_path %>
