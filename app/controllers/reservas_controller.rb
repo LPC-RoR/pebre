@@ -114,19 +114,15 @@ class ReservasController < ApplicationController
   end
 
   def anula
-    puts "anula"
-    puts @objeto.switch
     @objeto.switch = false
     @objeto.save
-    redirect_to reservas_path
+    redirect_to "/reservas?d=#{@objeto.fecha}"
   end
 
   def recupera
-    puts "recupera"
-    puts @objeto.switch
     @objeto.switch = true
     @objeto.save
-    redirect_to reservas_path
+    redirect_to "/reservas?d=#{@objeto.fecha}"
   end
 
   def asigna_mesa
