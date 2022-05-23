@@ -1,5 +1,6 @@
 class Cierre < ApplicationRecord
 	TABLA_FIELDS = [
-		['fecha', 'normal']
+		['fecha', 'normal'],
+		['horario', 'normal']
 	]
 end
