@@ -62,8 +62,13 @@ class ReservasController < ApplicationController
     tandas = (@domingo ? Tanda.where(turno: 'Almuerzo') : Tanda.all)
 
     # Se deben cargar los horarios de un día en particular
+    puts "******************************************* new"
     horarios_tandas = tandas.map {|tan| tan.horario.split('-')[0] if abierto(@fecha, tan.horario) }.compact.sort!
-    horarios_cerrados = Cierre.all.map {|cie| cie.horario.split('-')[0] if cie.fecha.to_s == @fecha.to_s}.compact
+    puts "*************************** #{horarios_tandas.any?}"
+    if Cierre.all.any?
+      horarios_cerrados = Cierre.all.map {|cie| cie.horario.split('-')[0] if cie.fecha.to_s == @fecha.to_s}.compact
+    else
+    end
     @horarios = horarios_tandas - horarios_cerrados
 
     @dia_abierto = (@horarios.any? and not @fecha.strftime("%A") == 'Monday')
