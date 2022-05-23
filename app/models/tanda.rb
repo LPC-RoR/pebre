@@ -9,4 +9,18 @@ class Tanda < ApplicationRecord
 		['capacidad', 'normal']
 	]
 
+	def activa(fecha)
+		cierres_fecha = Cierre.where(fecha: fecha)
+		if cierres_fecha.empty?
+			true
+		else
+			cierre_tanda = cierres_fecha.where(horario: self.horario)
+			if cierre_tanda.empty?
+				true
+			else
+				false
+			end
+		end
+	end
+
 end

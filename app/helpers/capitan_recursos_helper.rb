@@ -97,9 +97,11 @@ module CapitanRecursosHelper
 			admin?
 		elsif ['almuerzos', 'cenas'].include?(controller)
 			controller_name == 'mesas'
+		elsif ['resevas', 'cierres'].include?(controller)
+			false
 		else
 			case controller
-			when 'reservas'
+			when 'controlador_sin_new_button'
 				false
 			else
 				true
@@ -108,14 +110,12 @@ module CapitanRecursosHelper
 	end
 
 	def app_crud_conditions(objeto, btn)
-		if [].include?(objeto.class.name)
+		if ['cierres'].include?(objeto.class.name)
 			admin?
 		else
 			case objeto.class.name
 			when 'Clase'
 				admin?
-			when 'Reserva'
-				false
 			when 'Mesa'
 				controller_name == 'mesas'
 			else

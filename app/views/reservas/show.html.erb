@@ -1,29 +1,41 @@
-<p id="notice"><%= notice %></p>
+<div class='row'>
+  <div class='col-md-4'>
+    <small><i>Reserva de:</i></small>
+    <p>
+      <%= "#{@objeto.n_personas} paxs, a nombre de #{@objeto.anombre}" %>
+    </p>
 
-<p>
-  <strong>Anombre:</strong>
-  <%= @reserva.anombre %>
-</p>
+    <small><i>Para el:</i></small>
+    <p>
+      <%= "#{@objeto.fecha.day}/#{@objeto.fecha.month}/#{@objeto.fecha.year} a la(s) #{@objeto.hora}" %>
+    </p>
 
-<p>
-  <strong>Fecha:</strong>
-  <%= @reserva.fecha %>
-</p>
+    <small><i>Número de Contacto</i></small>
+    <p>
+      <%= @objeto.n_contacto %>
+    </p>
 
-<p>
-  <strong>N personas:</strong>
-  <%= @reserva.n_personas %>
-</p>
+    <small><i>Indicaciones</i></small>
+    <p>
+      <%= @objeto.indicaciones %>
+    </p>
+  </div>
+  <div class='col-md-4'>
+    <h6>Mesa(s) Asignada(s)</h6>
+    <% @mesas_reserva.each do |mesa| %>
+      <small>
+        <%= link_to "#{mesa.mesa} | #{mesa.zona}", "/reservas/#{@objeto.id}/elimina_mesa?mesa=#{mesa.id}" %>
+      </small><br>
+    <% end %>
+  </div>
+  <div class='col-md-4'>
+    <h6>Mesa(s) Disponible(s)</h6>
+    <% @mesas_disponibles.each do |mesa| %>
+      <small>
+        <%= link_to "#{mesa.mesa} | #{mesa.zona}", "/reservas/#{@objeto.id}/asigna_mesa?mesa=#{mesa.id}" %>
+      </small><br>
+    <% end %>
+  </div>
+</div>
 
-<p>
-  <strong>N contacto:</strong>
-  <%= @reserva.n_contacto %>
-</p>
-
-<p>
-  <strong>Indicaciones:</strong>
-  <%= @reserva.indicaciones %>
-</p>
-
-<%= link_to 'Edit', edit_reserva_path(@reserva) %> |
-<%= link_to 'Back', reservas_path %>
+<%= link_to 'Reservas', "/reservas?d=#{@objeto.fecha.year.to_s+@objeto.fecha.month.to_s.rjust(2, "0")+@objeto.fecha.day.to_s.rjust(2, "0")}" %>

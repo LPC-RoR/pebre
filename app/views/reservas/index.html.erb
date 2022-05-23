@@ -12,6 +12,12 @@
 		<div class='text-center'>
 			<% if @lunes %>
 				<h2 class='text-info'>LUNES CERRADO</h2>
+			<% else %>
+				<div class='text-center'>
+				<div class="btn btn-light">
+				  <%= link_to 'Ingreso Reserva', "/reservas/new?d=#{@fecha}", :class => "btn" %>
+				</div>
+				</div>
 			<% end %>
 		</div>
 	</div>
@@ -24,20 +30,15 @@
 	</div>
 </div>
 
-<div class='row'>
-	<div class='col-md-6'><h5 class='text-center'>Web</h5></div>
-	<div class='col-md-6'><h5 class='text-center'>Telefono/WhatsApp/Correo</h5></div>
-</div>
-
+<% unless @lunes %>
 <% @coleccion['tandas'].each do |tanda| %>
-	<div class='row'>
-		<h6><b><%= tanda.horario %></b></h6>
-	</div>
-	<div class='row'>
-		<div class='col-md-6'>
-			<%= render partial: 'reservas/tanda', locals: {coleccion: @tanda[tanda.horario]} unless @tanda[tanda.horario].empty? %>
-		</div>
-		<div class='col-md-6'>
-		</div>
-	</div>
+	<small><b><%= "#{tanda.horario} | #{@tanda[tanda.horario].map {|tan| tan.n_personas.to_i if tan.switch == true}.compact.sum} | #{'Completo' if @tanda[tanda.horario].map {|tan| tan.n_personas.to_i}.sum >= 20}" %></b></small>
+		<% if tanda.activa(@fecha) == true %>
+			<%= render partial: '0p/general/btn_proceso', locals: {texto: nil, link: link_x_btn(tanda, "/cierra?fecha=#{@fecha}", true), clr: color(tanda.class.name.tableize), delete: false, gly: 'toggle-on'} %>
+		<% else %>
+			<%= render partial: '0p/general/btn_proceso', locals: {texto: nil, link: link_x_btn(tanda, "/recupera?fecha=#{@fecha}", true), clr: color(tanda.class.name.tableize), delete: false, gly: 'toggle-off'} %>
+		<% end %>
+		<br>
+	<%= render partial: 'reservas/tanda', locals: {coleccion: @tanda[tanda.horario]} unless @tanda[tanda.horario].empty? %>
+<% end %>
 <% end %>

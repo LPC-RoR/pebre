@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
 
+  resources :res_mesas
   resources :llamadas
-  resources :tandas
+  resources :tandas do
+    match :cierra, via: :get, on: :member
+    match :recupera, via: :get, on: :member
+  end
   resources :reservaciones
   resources :detalle_reservas
   resources :mesas do 
@@ -14,6 +18,10 @@ Rails.application.routes.draw do
     match :reservacion, via: :get, on: :collection
     match :dia_reserva, via: :get, on: :collection
     match :elige_dia, via: :post, on: :collection
+    match :anula, via: :get, on: :member
+    match :recupera, via: :get, on: :member
+    match :asigna_mesa, via: :get, on: :member
+    match :elimina_mesa, via: :get, on: :member
   end
   resources :items
   resources :grupos do

@@ -1,5 +1,5 @@
 class TandasController < ApplicationController
-  before_action :set_tanda, only: %i[ show edit update destroy ]
+  before_action :set_tanda, only: %i[ show edit update destroy cierra recupera]
 
   # GET /tandas or /tandas.json
   def index
@@ -48,6 +48,34 @@ class TandasController < ApplicationController
         format.json { render json: @objeto.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def cierra
+    fecha = Date.parse(params[:fecha])
+    cierres_fecha = Cierre.where(fecha: fecha)
+    if cierres_fecha.empty?
+      Cierre.create(fecha: fecha, horario: @objeto.horario)
+    else
+      cierre_tanda = cierres_fecha.where(horario: @objeto.horario)
+      if cierre_tanda.empty?
+        Cierre.create(fecha: fecha, horario: @objeto.horario)
+      end
+    end
+    
+    redirect_to "/reservas?d=#{params[:fecha].split('-').join('')}"
+  end
+
+  def recupera
+    fecha = Date.parse(params[:fecha])
+    cierres_fecha = Cierre.where(fecha: fecha)
+    if cierres_fecha.any?
+      cierre_tanda = cierres_fecha.where(horario: @objeto.horario)
+      if cierre_tanda.any?
+        cierre_tanda.delete_all
+      end
+    end
+    
+    redirect_to "/reservas?d=#{params[:fecha].split('-').join('')}"
   end
 
   # DELETE /tandas/1 or /tandas/1.json

@@ -1,17 +1,35 @@
 <table class="table">
   <tbody>
     <tr>
+      <td scope="col"><small><i>Origen</i></small></td>
       <td scope="col"><small><i>A nombre de</i></small></td>
       <td scope="col"><small><i>Contacto</i></small></td>
       <td scope="col"><small><i>Paxs</i></small></td>
       <td scope="col"><small><i>Hora</i></small></td>
+      <td scope="col"><small><i>Mesa(s)</i></small></td>
+      <td scope="col"><small><i></i></small></td>
     </tr>
     <% coleccion.each do |reserva| %>
       <tr>
-        <td><small><%= reserva.anombre %></small></td>
+        <td><small><%= reserva.origen %></small></td>
+        <td><small>
+          <% if reserva.fecha == Date.today %>
+            <%= link_to reserva.anombre, reserva %>
+          <% else %>
+            <%= reserva.anombre %>
+          <% end %>
+        </small></td>
         <td><small><%= reserva.n_contacto %></small></td>
         <td><small><%= reserva.n_personas %></small></td>
         <td><small><%= reserva.hora %></small></td>
+        <td><small><%= reserva.ubicacion %></small></td>
+        <td>
+          <% if reserva.switch == true %>
+            <%= render partial: '0p/general/btn_proceso', locals: {texto: nil, link: link_x_btn(reserva, '/anula', true), clr: color(reserva.class.name.tableize), delete: false, gly: 'toggle-on'} %>
+          <% else %>
+            <%= render partial: '0p/general/btn_proceso', locals: {texto: nil, link: link_x_btn(reserva, '/recupera', true), clr: color(reserva.class.name.tableize), delete: false, gly: 'toggle-off'} %>
+          <% end %>
+        </td>
     </small>
     <% end %>
   </tbody>

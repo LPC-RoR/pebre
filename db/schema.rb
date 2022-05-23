@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_24_164559) do
+ActiveRecord::Schema.define(version: 2022_05_19_144158) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -198,7 +198,9 @@ ActiveRecord::Schema.define(version: 2022_04_24_164559) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "turno"
+    t.string "horario"
     t.index ["fecha"], name: "index_cierres_on_fecha"
+    t.index ["horario"], name: "index_cierres_on_horario"
   end
 
   create_table "detalle_reservas", force: :cascade do |t|
@@ -290,6 +292,8 @@ ActiveRecord::Schema.define(version: 2022_04_24_164559) do
     t.boolean "anulada"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "fecha"
+    t.index ["fecha"], name: "index_llamadas_on_fecha"
   end
 
   create_table "mesas", force: :cascade do |t|
@@ -320,6 +324,15 @@ ActiveRecord::Schema.define(version: 2022_04_24_164559) do
     t.index ["estado"], name: "index_proyectos_on_estado"
   end
 
+  create_table "res_mesas", force: :cascade do |t|
+    t.integer "reserva_id"
+    t.integer "mesa_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["mesa_id"], name: "index_res_mesas_on_mesa_id"
+    t.index ["reserva_id"], name: "index_res_mesas_on_reserva_id"
+  end
+
   create_table "reservaciones", force: :cascade do |t|
     t.date "fecha"
     t.string "servicio"
@@ -344,6 +357,10 @@ ActiveRecord::Schema.define(version: 2022_04_24_164559) do
     t.datetime "updated_at", null: false
     t.string "hora"
     t.boolean "anulada"
+    t.string "origen"
+    t.boolean "switch"
+    t.index ["origen"], name: "index_reservas_on_origen"
+    t.index ["switch"], name: "index_reservas_on_switch"
   end
 
   create_table "sb_elementos", force: :cascade do |t|

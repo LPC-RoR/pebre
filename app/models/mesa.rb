@@ -1,12 +1,11 @@
 class Mesa < ApplicationRecord
 	TABLA_FIELDS = [
 #		['servicio',  'normal'],
-		['ubicacion',      'normal'],
-		['pasajeros', 'normal'],
-		['horario',   'normal']
+		['zona',      'normal'],
+		['mesa', 'normal']
 	]
 
-	def ubicacion
-		self.mesa + ' ' + self.zona
-	end
+	has_many :res_mesas
+	has_many :reservas, through: :res_mesas
+
 end

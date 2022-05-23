@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Res Mesas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Reserva</th>
+      <th>Mesa</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @res_mesas.each do |res_mesa| %>
+      <tr>
+        <td><%= res_mesa.reserva_id %></td>
+        <td><%= res_mesa.mesa_id %></td>
+        <td><%= link_to 'Show', res_mesa %></td>
+        <td><%= link_to 'Edit', edit_res_mesa_path(res_mesa) %></td>
+        <td><%= link_to 'Destroy', res_mesa, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Res Mesa', new_res_mesa_path %>

@@ -3,10 +3,17 @@ class Reserva < ApplicationRecord
 
 	MESAS = [1, 2, 3, 4, 5, 6]
 
-	TABLA_FIELDS = [
-		['anombre', 'normal'],
-		['n_contacto', 'normal'],
-		['n_personas', 'normal'],
-		['hora', 'normal']
-	]
+	has_many :res_mesas
+	has_many :mesas, through: :res_mesas
+
+#	validates :anombre, :n_contacto, :n_personas, :hora, presence: true
+
+	def ubicacion
+		if self.mesas.empty?
+			'-'
+		else
+			self.mesas.map {|mesa| mesa.mesa}.join('-')
+		end
+	end
+
 end

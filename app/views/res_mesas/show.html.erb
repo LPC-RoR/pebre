@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Reserva:</strong>
+  <%= @res_mesa.reserva_id %>
+</p>
+
+<p>
+  <strong>Mesa:</strong>
+  <%= @res_mesa.mesa_id %>
+</p>
+
+<%= link_to 'Edit', edit_res_mesa_path(@res_mesa) %> |
+<%= link_to 'Back', res_mesas_path %>

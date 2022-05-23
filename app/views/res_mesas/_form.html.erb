@@ -1,0 +1,27 @@
+<%= form_with(model: res_mesa, local: true) do |form| %>
+  <% if res_mesa.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(res_mesa.errors.count, "error") %> prohibited this res_mesa from being saved:</h2>
+
+      <ul>
+      <% res_mesa.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :reserva_id %>
+    <%= form.number_field :reserva_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :mesa_id %>
+    <%= form.number_field :mesa_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
