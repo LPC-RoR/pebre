@@ -68,6 +68,7 @@ class ReservasController < ApplicationController
     if Cierre.all.any?
       horarios_cerrados = Cierre.all.map {|cie| cie.horario.split('-')[0] if cie.fecha.to_s == @fecha.to_s}.compact
     else
+      horarios_cerrados = []
     end
     @horarios = horarios_tandas - horarios_cerrados
 
