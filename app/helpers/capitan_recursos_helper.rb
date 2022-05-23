@@ -93,7 +93,7 @@ module CapitanRecursosHelper
 	end
 
 	def app_new_button_conditions(controller)
-		if [].include?(controller)
+		if ['cierres', 'tandas'].include?(controller)
 			admin?
 		elsif ['almuerzos', 'cenas'].include?(controller)
 			controller_name == 'mesas'
@@ -110,7 +110,7 @@ module CapitanRecursosHelper
 	end
 
 	def app_crud_conditions(objeto, btn)
-		if ['cierres'].include?(objeto.class.name)
+		if ['cierres', 'tandas'].include?(objeto.class.name)
 			admin?
 		else
 			case objeto.class.name
