@@ -62,7 +62,7 @@ class TandasController < ApplicationController
       end
     end
     
-    redirect_to "/reservas?d=#{params[:fecha].split('-').join('')}"
+    redirect_to "/reservas?d=#{fecha}"
   end
 
   def recupera
@@ -75,7 +75,7 @@ class TandasController < ApplicationController
       end
     end
     
-    redirect_to "/reservas?d=#{params[:fecha].split('-').join('')}"
+    redirect_to "/reservas?d=#{fecha}"
   end
 
   # DELETE /tandas/1 or /tandas/1.json
